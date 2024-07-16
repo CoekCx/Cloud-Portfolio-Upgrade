@@ -60,6 +60,7 @@
     <Compile Include="Entities\CryptoCurrency.cs" />
     <Compile Include="Entities\EndpointEntity.cs" />
     <Compile Include="Entities\Enums\TransactionType.cs" />
+    <Compile Include="Entities\Enums\UserType.cs" />
     <Compile Include="Entities\HealthCheck.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Entities\User.cs" />

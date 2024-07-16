@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
+﻿using CryptoPortfolioService_Data.Entities.Enums;
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 
 namespace CryptoPortfolioService_Data.Entities
@@ -14,6 +15,7 @@ namespace CryptoPortfolioService_Data.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public string PhotoUrl { get; set; }
+        public string Type { get; set; }
 
         public User()
         {

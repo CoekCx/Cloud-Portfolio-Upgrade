@@ -73,7 +73,8 @@ namespace CryptoPortfolioService_WebRole.Controllers
                     Phone = Phone,
                     Email = Email,
                     Password = Password,                    
-                    PhotoUrl = blobUri
+                    PhotoUrl = blobUri,
+                    Type = CryptoPortfolioService_Data.Entities.Enums.UserType.VISITOR.ToString()
                 };                
                 
                 _userRepository.AddUsear(user);
