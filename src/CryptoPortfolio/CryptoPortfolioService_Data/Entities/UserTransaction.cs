@@ -5,8 +5,8 @@ namespace CryptoPortfolioService_Data.Entities
 {
     public class UserTransaction : TableEntity
     {
-        public string SenderId { get; set; }
-        public string ReceiverId { get; set; }
+        public string SenderEmail { get; set; }
+        public string ReceiverEmail { get; set; }
         public string CurrencyName { get; set; }
         public double Amount { get; set; }
         public double Fee { get; set; }

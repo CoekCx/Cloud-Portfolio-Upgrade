@@ -29,8 +29,8 @@
                         }
                         else if (userType == "VISITOR")
                         {
-                            <li>@Html.ActionLink("My Transactions", "MyTransactions", "Transaction", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("New Transaction", "NewTransaction", "Transaction", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("User Transactions", "MyTransactions", "Transaction", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Send Funds", "NewTransaction", "Transaction", new { area = "" }, new { @class = "nav-link" })</li>
                         }
                     }
                     <li>@Html.ActionLink("User", "Profile", "User", new { area = "" }, new { @class = "nav-link" })</li>
@@ -39,12 +39,12 @@
                     <li>@Html.ActionLink("My currencies", "UserCryptoCurrencies", "Portfolio", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
                 <ul class="navbar-nav flex-grow-1 ml-auto">
-                    <li>@Html.ActionLink("Register", "Register", "Authentication", new { area = "" }, new { @class = "nav-link" })</li>
                     @{
                         string userId = (string)Session["userRowKey"];
                         if (userId == null)
                         {
                             <li>@Html.ActionLink("Login", "Login", "Authentication", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Register", "Register", "Authentication", new { area = "" }, new { @class = "nav-link" })</li>
                         }
                         else
                         {

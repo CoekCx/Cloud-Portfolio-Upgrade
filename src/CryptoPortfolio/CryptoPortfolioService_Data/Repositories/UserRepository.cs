@@ -70,6 +70,12 @@ namespace CryptoPortfolioService_Data.Repositories
             User user = RetrieveAllUsers().Where(p => p.Email == email && p.Password == password).FirstOrDefault();
             return user;
         }
+        
+        public User GetUserByEmail(string email)
+        {
+            User user = RetrieveAllUsers().Where(p => p.Email == email).FirstOrDefault();
+            return user;
+        }
 
         public void UpdateUser(User user)
         {

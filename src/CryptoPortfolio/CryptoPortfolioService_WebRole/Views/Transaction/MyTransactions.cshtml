@@ -21,8 +21,8 @@
             @foreach (var transaction in transactions)
             {
                 <tr>
-                    <td>@transaction.SenderId</td>
-                    <td>@transaction.ReceiverId</td>
+                    <td>@transaction.SenderEmail</td>
+                    <td>@transaction.ReceiverEmail</td>
                     <td>@transaction.CurrencyName</td>
                     <td>@transaction.Amount</td>
                     <td>@transaction.Fee</td>

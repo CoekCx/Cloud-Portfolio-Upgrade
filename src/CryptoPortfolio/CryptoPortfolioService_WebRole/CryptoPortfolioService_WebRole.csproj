@@ -220,6 +220,7 @@
     <Content Include="Views\User\ChangePicture.cshtml" />
     <Content Include="Views\Transaction\Transactions.cshtml" />
     <Content Include="Views\Transaction\MyTransactions.cshtml" />
+    <Content Include="Views\Transaction\NewTransaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

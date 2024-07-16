@@ -45,9 +45,9 @@ namespace CryptoPortfolioService_Data.Repositories
             return RetrieveAllTransactions().Where(p => p.RowKey == id).FirstOrDefault();
         }
 
-        public List<UserTransaction> GetTransactionByUser(string userId)
+        public List<UserTransaction> GetTransactionByUser(string userEmail)
         {
-            return RetrieveAllTransactions().Where(p => p.ReceiverId == userId || p.SenderId == userId).ToList();
+            return RetrieveAllTransactions().Where(p => p.ReceiverEmail == userEmail || p.SenderEmail == userEmail).ToList();
         }
 
         public void RemoveTransaction(string id)
