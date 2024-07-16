@@ -23,7 +23,22 @@ namespace CryptoPortfolioService_WebRole.Controllers
                 return RedirectToAction("Login", "Authentication");
             }
             var transactions = _userTransactionRepository.RetrieveAllTransactions();
+
+            var flowByMonth = new double[12];
+            var flowByDay = new double[7];
+
+            foreach (var transaction in transactions)
+            {
+                int month = transaction.TransactionDate.Month - 1;
+                int day = (int)transaction.TransactionDate.DayOfWeek;
+
+                flowByMonth[month] += transaction.Value;
+                flowByDay[day] += transaction.Value;
+            }
+
             ViewBag.Transactions = transactions;
+            ViewBag.FlowByMonth = flowByMonth;
+            ViewBag.FlowByDay = flowByDay;
             return View();
         }
 

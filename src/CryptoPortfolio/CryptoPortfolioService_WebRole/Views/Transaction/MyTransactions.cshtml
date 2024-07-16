@@ -1,12 +1,14 @@
 ﻿@using Newtonsoft.Json
 
-@{ ViewBag.Title = "My Transactions";
-                Layout = "~/Views/Shared/_Layout.cshtml";
-                var transactions = ViewBag.Transactions as List<CryptoPortfolioService_Data.Entities.UserTransaction>;
-                var inflowByMonth = ViewBag.InflowByMonth as double[];
-                var outflowByMonth = ViewBag.OutflowByMonth as double[];
-                var inflowByDay = ViewBag.InflowByDay as double[];
-                var outflowByDay = ViewBag.OutflowByDay as double[]; }
+@{
+    ViewBag.Title = "My Transactions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var transactions = ViewBag.Transactions as List<CryptoPortfolioService_Data.Entities.UserTransaction>;
+    var inflowByMonth = ViewBag.InflowByMonth as double[];
+    var outflowByMonth = ViewBag.OutflowByMonth as double[];
+    var inflowByDay = ViewBag.InflowByDay as double[];
+    var outflowByDay = ViewBag.OutflowByDay as double[];
+}
 
 <div class="container mt-5">
     <h2>My Transactions</h2>

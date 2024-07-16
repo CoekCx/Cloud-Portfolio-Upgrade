@@ -1,7 +1,10 @@
-﻿@{
-    ViewBag.Title = "Transactions";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var transactions = ViewBag.Transactions as List<CryptoPortfolioService_Data.Entities.UserTransaction>;
+﻿@using Newtonsoft.Json
+
+@{ ViewBag.Title = "Transactions";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var transactions = ViewBag.Transactions as List<CryptoPortfolioService_Data.Entities.UserTransaction>;
+                var flowByMonth = ViewBag.FlowByMonth as double[];
+                var flowByDay = ViewBag.FlowByDay as double[];
 }
 
 <div class="container mt-5">
@@ -20,15 +23,15 @@
         <tbody>
             @foreach (var transaction in transactions)
             {
-                <tr>
-                    <td>@transaction.SenderEmail</td>
-                    <td>@transaction.ReceiverEmail</td>
-                    <td>@transaction.CurrencyName</td>
-                    <td>@transaction.Amount</td>
-                    <td>@transaction.Fee</td>
-                    <td>@transaction.TransactionDate</td>
-                </tr>
-            }
+<tr>
+    <td>@transaction.SenderEmail</td>
+    <td>@transaction.ReceiverEmail</td>
+    <td>@transaction.CurrencyName</td>
+    <td>@transaction.Amount</td>
+    <td>@transaction.Fee</td>
+    <td>@transaction.TransactionDate</td>
+</tr>
+       }
         </tbody>
     </table>
 
@@ -52,36 +55,22 @@
             datasets: [
                 {
                     label: 'Inflow',
-                    data: [ /* Your inflow data by month */ ],
+                    data: @Html.Raw(JsonConvert.SerializeObject(flowByDay)),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Outflow',
-                    data: [ /* Your outflow data by month */ ],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 }
             ]
         };
 
         var dailyData = {
-            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             datasets: [
                 {
                     label: 'Inflow',
-                    data: [ /* Your inflow data by day */ ],
+                    data: @Html.Raw(JsonConvert.SerializeObject(flowByDay)),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Outflow',
-                    data: [ /* Your outflow data by day */ ],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 }
             ]
