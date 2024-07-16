@@ -35,7 +35,35 @@ namespace CryptoPortfolioService_WebRole.Controllers
             }
             var user = _helper.GetUserFromSession();
             var transactions = _userTransactionRepository.GetTransactionByUser(user.Email);
+
+            var inflowByMonth = new double[12];
+            var outflowByMonth = new double[12];
+            var inflowByDay = new double[7];
+            var outflowByDay = new double[7];
+
+            foreach (var transaction in transactions)
+            {
+                int month = transaction.TransactionDate.Month - 1;
+                int day = (int)transaction.TransactionDate.DayOfWeek;
+
+                if (transaction.ReceiverEmail == user.Email)
+                {
+                    inflowByMonth[month] += transaction.Value;
+                    inflowByDay[day] += transaction.Value;
+                }
+                else if (transaction.SenderEmail == user.Email)
+                {
+                    outflowByMonth[month] += transaction.Value;
+                    outflowByDay[day] += transaction.Value;
+                }
+            }
+
             ViewBag.Transactions = transactions;
+            ViewBag.InflowByMonth = inflowByMonth;
+            ViewBag.OutflowByMonth = outflowByMonth;
+            ViewBag.InflowByDay = inflowByDay;
+            ViewBag.OutflowByDay = outflowByDay;
+
             return View();
         }
 
@@ -84,14 +112,16 @@ namespace CryptoPortfolioService_WebRole.Controllers
 
             var profitPercentage = (double)amount / userCurrency.Quantity;
             var profit = userCurrency.Profit * profitPercentage;
+            var positiveProfit = profit > 0 ? profit : -profit;
 
             var transaction = new UserTransaction
             {
                 SenderEmail = user.Email,
                 ReceiverEmail = recipient.Email,
                 CurrencyName = currency,
+                Value = positiveProfit,
                 Amount = amount,
-                Fee = profit*CalculateTransactionFee(amount),
+                Fee = positiveProfit * CalculateTransactionFee(amount),
                 TransactionDate = DateTime.UtcNow
             };
 

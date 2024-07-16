@@ -9,6 +9,7 @@ namespace CryptoPortfolioService_Data.Entities
         public string ReceiverEmail { get; set; }
         public string CurrencyName { get; set; }
         public double Amount { get; set; }
+        public double Value { get; set; }
         public double Fee { get; set; }
         public DateTime TransactionDate { get; set; }
 
