@@ -28,6 +28,7 @@ namespace CryptoPortfolioService_WebRole.Controllers
         public ActionResult Logout()
         {
             Session["userRowKey"] = null;
+            Session["userType"] = null;
             return View("Login");
         }
 
@@ -94,6 +95,7 @@ namespace CryptoPortfolioService_WebRole.Controllers
                 return View("Login");
 
             Session["userRowKey"] = user.RowKey;
+            Session["userType"] = user.Type;
             return RedirectToAction("Profile", "User");
         }
     }
