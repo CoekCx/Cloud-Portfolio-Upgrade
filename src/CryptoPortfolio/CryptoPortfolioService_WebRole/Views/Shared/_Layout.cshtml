@@ -30,6 +30,7 @@
                         else if (userType == "VISITOR")
                         {
                             <li>@Html.ActionLink("My Transactions", "MyTransactions", "Transaction", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("New Transaction", "NewTransaction", "Transaction", new { area = "" }, new { @class = "nav-link" })</li>
                         }
                     }
                     <li>@Html.ActionLink("User", "Profile", "User", new { area = "" }, new { @class = "nav-link" })</li>
