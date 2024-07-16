@@ -139,6 +139,7 @@
     <Compile Include="Controllers\HealthCheckController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PortfolioController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,6 +218,8 @@
     <Content Include="Views\Portfolio\UserCryptoCurrencies.cshtml" />
     <Content Include="Views\Portfolio\UserCurrencyDetails.cshtml" />
     <Content Include="Views\User\ChangePicture.cshtml" />
+    <Content Include="Views\Transaction\Transactions.cshtml" />
+    <Content Include="Views\Transaction\MyTransactions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
